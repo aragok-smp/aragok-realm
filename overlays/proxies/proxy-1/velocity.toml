@@ -1,0 +1,11 @@
+[servers]
+  [servers.survival]
+    host = "127.0.0.1"
+    port = 30066
+    
+bind = "test"
+secret = "{{ .secrets.forwarding_secret }}"
+
+try = [
+  "survival"
+]

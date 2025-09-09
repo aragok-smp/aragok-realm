@@ -1,0 +1,17 @@
+servers:
+  - id: proxy-1
+    templates:
+      - ./templates/velocity
+    input: ./output/proxies/proxy-1
+
+  - id: hub
+    template:
+      - ./templates/paper-base
+    input: ./output/servers/hub
+
+  - id: survival
+    template:
+      - ./templates/paper-base
+      - ./templates/paper-survival
+      - ./templates/plugin-groups/global
+    input: ./output/servers/survival
