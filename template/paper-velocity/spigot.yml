@@ -1,0 +1,4 @@
+settings:
+  # velocity needs bungeecord to be set to false.
+  # we make use of velocity's paper forwarding system.
+  bungeecord: false

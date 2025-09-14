@@ -1,0 +1,4 @@
+source:
+  type: http
+  url: https://fill-data.papermc.io/v1/objects/0c8327f15976c00d97e9db9f387f3b9923403d158a2ade35dfbdfc40e5be8876/velocity-3.4.0-SNAPSHOT-534.jar
+sha: 0c8327f15976c00d97e9db9f387f3b9923403d158a2ade35dfbdfc40e5be8876

@@ -1,0 +1,5 @@
+proxies:
+  velocity:
+    enabled: true
+    online-mode: true
+    secret: ZsHybWdqLiBj # TODO: change this to load from secret store

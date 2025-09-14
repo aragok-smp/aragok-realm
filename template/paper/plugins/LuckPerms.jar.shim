@@ -1,0 +1,4 @@
+source:
+  type: http
+  url: https://download.luckperms.net/1596/bukkit/loader/LuckPerms-Bukkit-5.5.11.jar
+sha: a018b8bb3703c7deeb36cebd11f79bf16384b6b5056cdf54237fc3cce9a202e2

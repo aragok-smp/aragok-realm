@@ -1,17 +1,45 @@
-servers:
-  - id: proxy-1
+version: 1
+
+exclude: []
+
+targets:
+  proxy:
+    output: proxy
+    tags: # tags are used for goals, e.g. gok render --label gok/type=proxy
+      - proxy
+    # templates go from top to bottom, later templates can override earlier ones
     templates:
-      - ./templates/velocity
-    input: ./output/proxies/proxy-1
+      - from: ./templates/velocity
+        # values can override (or add) values just for this template
+        values:
+          # in this case, ./templates/velocity requires a "server-name" value, which we might only
+          # need for this template, so we set it here, only for this template.
+          # note that this means that other templates rendered for this target will not see and cannot use this value.
+          server-name: proxy # used by LuckPerms
+      # ./overlays/proxy is technically not a "real" template, but an overlay
+      # but they serve the same purpose, so we can use "template" and "overlay" interchangeably
+      # overlays should be applied after all templates have been rendered
+      - from: ./overlays/proxy
+    values:
+      # values can be accessed inside the template via
+      #   {{ .values.$current.<key> }}
+      # or from other targets via
+      #   {{ .values.<target>.<key> }}
+      server-ip: "127.0.0.1"
+      server-port: 25565
+      # servers need to be overlayed via ./overlays/proxy/velocity.toml
 
-  - id: hub
-    template:
-      - ./templates/paper-base
-    input: ./output/servers/hub
-
-  - id: survival
-    template:
-      - ./templates/paper-base
-      - ./templates/paper-survival
-      - ./templates/plugin-groups/global
-    input: ./output/servers/survival
+  survival:
+    output: survival
+    tags:
+      - survival
+    templates:
+      - from: ./templates/paper
+        values:
+          server-name: survival # used by LuckPerms
+      - from: ./templates/paper-velocity # for velocity support
+      - from: ./templates/paper-resource-pack # to require resource pack
+      - from: ./overlays/survival
+    values:
+      server-ip: "127.0.0.1"
+      server-port: 30066

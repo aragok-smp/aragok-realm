@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" shutdownHook="disable">
+  <Appenders>
+    <!-- GUI console queue (unchanged) -->
+    <Queue name="ServerGuiConsole">
+      <PatternLayout pattern="[%d{HH:mm:ss} %level]: %msg{nolookups}%n"/>
+    </Queue>
+
+    <!-- Terminal console: human-readable (unchanged) -->
+    <TerminalConsole name="TerminalConsole">
+      <PatternLayout>
+        <LoggerNamePatternSelector
+            defaultPattern="%highlightError{[%d{HH:mm:ss} %level]: [%logger] %msg%n%xEx{full}}">
+          <!-- Log root, Minecraft, Mojang and Bukkit loggers without prefix -->
+          <!-- Disable prefix for various plugins that bypass the plugin logger -->
+          <PatternMatch key=",net.minecraft.,Minecraft,com.mojang.,com.sk89q.,ru.tehkode.,Minecraft.AWE"
+                        pattern="%highlightError{[%d{HH:mm:ss} %level]: %msg%n%xEx{full}}"/>
+        </LoggerNamePatternSelector>
+      </PatternLayout>
+    </TerminalConsole>
+
+    <!-- Plaintext rolling file (keep default latest.log) -->
+    <RollingRandomAccessFile name="File"
+        fileName="logs/latest.log"
+        filePattern="logs/%d{yyyy-MM-dd}-%i.log.gz">
+      <PatternLayout>
+        <LoggerNamePatternSelector
+            defaultPattern="[%d{HH:mm:ss}] [%t/%level]: [%logger] %stripAnsi{%msg}%n%xEx{full}">
+          <PatternMatch key=",net.minecraft.,Minecraft,com.mojang.,com.sk89q.,ru.tehkode.,Minecraft.AWE"
+                        pattern="[%d{HH:mm:ss}] [%t/%level]: %stripAnsi{%msg}%n%xEx{full}"/>
+        </LoggerNamePatternSelector>
+      </PatternLayout>
+      <Policies>
+        <TimeBasedTriggeringPolicy/>
+        <OnStartupTriggeringPolicy/>
+      </Policies>
+      <DefaultRolloverStrategy max="1000"/>
+    </RollingRandomAccessFile>
+
+    <!-- NEW: JSON rolling file for Loki/Promtail -->
+    <RollingRandomAccessFile name="JsonFile"
+        fileName="logs/latest.json"
+        filePattern="logs/json/%d{yyyy-MM-dd}-%i.json.gz">
+      <JsonLayout
+        eventEol="true"
+        compact="true"
+        includeTimeMillis="true"
+        includeStacktrace="true"
+        stacktraceAsString="true"
+        properties="true"
+        locationInfo="false"/>
+      <Policies>
+        <TimeBasedTriggeringPolicy/>
+        <OnStartupTriggeringPolicy/>
+      </Policies>
+      <DefaultRolloverStrategy max="1000"/>
+    </RollingRandomAccessFile>
+
+    <!-- Keep Paper's rewrite/async pipeline so deobfuscation still applies -->
+    <Async name="Async">
+      <AppenderRef ref="rewrite"/>
+    </Async>
+
+    <Rewrite name="rewrite">
+      <StacktraceDeobfuscatingRewritePolicy/>
+      <AppenderRef ref="rewrite2"/>
+    </Rewrite>
+
+    <Rewrite name="rewrite2">
+      <ExtraClassInfoRewritePolicy/>
+      <!-- Send to all three sinks: plaintext file, console, and JSON file -->
+      <AppenderRef ref="File"/>
+      <AppenderRef ref="TerminalConsole" level="info"/>
+      <AppenderRef ref="ServerGuiConsole" level="info"/>
+      <AppenderRef ref="JsonFile"/>
+    </Rewrite>
+  </Appenders>
+
+  <Loggers>
+    <Root level="info">
+      <filters>
+        <MarkerFilter marker="NETWORK_PACKETS" onMatch="DENY" onMismatch="NEUTRAL"/>
+      </filters>
+      <AppenderRef ref="Async"/>
+    </Root>
+  </Loggers>
+</Configuration>
