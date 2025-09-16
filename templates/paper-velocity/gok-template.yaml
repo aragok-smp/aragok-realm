@@ -1,0 +1,14 @@
+version: 1
+
+name: Inject Velocity Support into PaperMC
+description: >-
+  Sets up the server to support Velocity
+
+maintainers:
+  - name: darmiel
+  - name: TomRomeo
+
+imports:
+  velocityForwardingSecret:
+    description: "Velocity Binding Secret"
+    required: true

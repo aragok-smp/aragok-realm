@@ -1,8 +1,0 @@
-# overlayed velocity.toml contains all the servers
-
-[servers]
-"survival" = "{{ .values.survival.server-ip }}:{{ .values.survival.server-port }}"
-
-try = [
-  "survival"
-]

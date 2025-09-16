@@ -1,0 +1,35 @@
+version: 1
+
+values:
+  motd: "A gok powered Minecraft server!"
+  velocityForwardingSecret: "{{ .secrets.velocity.forwarding_secret }}"
+
+targets:
+  proxy:
+    output: proxy
+    tags:
+      - proxy
+    templates:
+      - from: ./templates/velocity
+      - from: ./overlays/proxy
+    values:
+      # values can be accessed inside the template via
+      #   {{ .values.<key> }}
+      # note that they need to be defined in the gok-template.yaml file.
+      bindIP: "0.0.0.0"
+      bindPort: 25565
+      serverName: proxy # used by LuckPerms
+
+  survival:
+    output: survival
+    tags:
+      - survival
+    templates:
+      - from: ./templates/paper
+      - from: ./templates/paper-velocity # for velocity support
+      - from: ./templates/paper-resource-pack # to require resource pack
+      - from: ./overlays/survival
+    values:
+      bindIP: "127.0.0.2"
+      bindPort: 30066
+      serverName: survival # used by LuckPerms

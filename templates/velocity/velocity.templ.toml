@@ -2,7 +2,7 @@
 config-version = "2.7"
 
 # What port should the proxy be bound to? By default, we'll bind to all addresses on port 25565.
-bind = "{{ .values.$current.server-ip }}:{{ .values.$current.server-port }}"
+bind = "{{ .values.bindIP }}:{{ .values.bindPort }}"
 
 # What should be the MOTD? This gets displayed when the player adds your server to
 # their server list. Only MiniMessage format is accepted.
@@ -75,12 +75,6 @@ sample-players-in-ping = false
 enable-player-address-logging = true
 
 [servers]
-# Configure your servers here. Each key represents the server's name, and the value
-# represents the IP address of the server to connect to.
-_ = "!!required"
-
-# In what order we should try servers when a player logs in or is kicked from a server.
-try = [ "!!required" ]
 
 [forced-hosts]
 # "lobby.example.com" = [

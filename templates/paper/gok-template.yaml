@@ -1,0 +1,21 @@
+version: 1
+
+name: PaperMC (base)
+description: >-
+  Provides the base configuration for a PaperMC server,
+  such as the server.jar and base plugins.
+
+maintainers:
+  - name: darmiel
+  - name: TomRomeo
+
+imports:
+  serverName:
+    description: "Server name for LuckPerms"
+    required: true
+  bindIP:
+    description: "the server address used for binding the server"
+    required: true
+  bindPort:
+    description: "the server port used for binding the server"
+    required: true

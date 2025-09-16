@@ -1,0 +1,23 @@
+version: 1
+
+name: Velocity (base)
+description: >-
+  Provides the base configuration for a Velocity server.
+
+maintainers:
+  - name: darmiel
+  - name: TomRomeo
+
+imports:
+  velocityForwardingSecret:
+    description: "Velocity Binding Secret"
+    required: true
+  serverName:
+    description: "Server name for LuckPerms"
+    required: true
+  bindIP:
+    description: "IP address to bind the server to"
+    required: true
+  bindPort:
+    description: "Port to bind the server to"
+    required: true
