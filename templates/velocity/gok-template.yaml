@@ -8,16 +8,20 @@ maintainers:
   - name: darmiel
   - name: TomRomeo
 
+# note that this template requires secret:
+# .secrets.realm.velocity.forwarding_secret
 imports:
-  velocityForwardingSecret:
-    description: "Velocity Binding Secret"
-    required: true
-  serverName:
-    description: "Server name for LuckPerms"
-    required: true
-  bindIP:
-    description: "IP address to bind the server to"
-    required: true
-  bindPort:
-    description: "Port to bind the server to"
-    required: true
+  secrets:
+    "realm.velocity.forwarding_secret":
+      description: "Velocity Forwarding Secret"
+      required: true
+  values:
+    velocityBindIP:
+      description: "IP address to bind the server to"
+      required: true
+    velocityBindPort:
+      description: "Port to bind the server to"
+      required: true
+    serverName:
+      description: "Server name for LuckPerms"
+      required: true

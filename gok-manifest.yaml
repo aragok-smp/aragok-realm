@@ -2,7 +2,6 @@ version: 1
 
 values:
   motd: "A gok powered Minecraft server!"
-  velocityForwardingSecret: "{{ .secrets.velocity.forwarding_secret }}"
 
 targets:
   proxy:
@@ -16,8 +15,9 @@ targets:
       # values can be accessed inside the template via
       #   {{ .values.<key> }}
       # note that they need to be defined in the gok-template.yaml file.
-      bindIP: "0.0.0.0"
-      bindPort: 25565
+      # provided by external values.yaml
+      # velocityBindIP: "0.0.0.0"
+      velocityBindPort: 25565
       serverName: proxy # used by LuckPerms
 
   survival:

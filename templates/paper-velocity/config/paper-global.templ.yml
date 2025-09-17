@@ -2,4 +2,4 @@ proxies:
   velocity:
     enabled: true
     online-mode: true
-    secret: "{{ .values.velocityForwardingSecret }}"
+    secret: "{{ .secrets.realm.velocity.forwarding_secret }}"

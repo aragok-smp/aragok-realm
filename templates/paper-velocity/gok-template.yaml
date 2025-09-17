@@ -8,7 +8,10 @@ maintainers:
   - name: darmiel
   - name: TomRomeo
 
+# note that this template requires secret:
+# .secrets.realm.velocity.forwarding_secret
 imports:
-  velocityForwardingSecret:
-    description: "Velocity Binding Secret"
-    required: true
+  secrets:
+    "realm.velocity.forwarding_secret":
+      description: "Velocity Forwarding Secret"
+      required: true

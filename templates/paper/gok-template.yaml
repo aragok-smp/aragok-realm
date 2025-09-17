@@ -10,12 +10,17 @@ maintainers:
   - name: TomRomeo
 
 imports:
-  serverName:
-    description: "Server name for LuckPerms"
-    required: true
-  bindIP:
-    description: "the server address used for binding the server"
-    required: true
-  bindPort:
-    description: "the server port used for binding the server"
-    required: true
+  secrets:
+    "realm.velocity.forwarding_secret":
+      description: "Velocity Forwarding Secret"
+      required: true
+  values:
+    serverName:
+      description: "Server name for LuckPerms"
+      required: true
+    bindIP:
+      description: "the server address used for binding the server"
+      required: true
+    bindPort:
+      description: "the server port used for binding the server"
+      required: true

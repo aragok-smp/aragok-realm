@@ -1,22 +1,8 @@
 # aragok-infrastructure
 
-## CLI
-
-### Rendering
-
-- `aragok render -m manifest.yaml -A -o <output, e.g. tarball or folder> -s secrets.yaml`
-- `aragok render -m manifest.yaml -t hub -o <output, e.g. tarball or folder> -s secrets.yaml` (to render a specific server, in this case hub)
-- `aragok render -m manifest.yaml -A -n` (dry run render all, or -t hub for specific server)
-
-.. Also checks for `$REQUIRED`
-
-### Applying
+Render using [gok](https://github.com/sap-gg/gok):
 
 ```bash
-$ aragok apply -i <input, e.g. tarball or folder> -t <target>
-Applying paper.jar
-Applying server.properties
-Applying plugins/...
-...
-OK!
+sops decrypt secrets.yaml | gok render -A -f values/dev-values.yaml -s - -o aragok.tar.gz
 ```
+
