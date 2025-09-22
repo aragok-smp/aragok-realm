@@ -2,12 +2,4 @@ version: 1
 
 values: {}
 
-targets:
-  proxy:
-    values:
-      bindIP: 0.0.0.0
-      bindPort: 25566
-  survival:
-    values:
-      bindIP: 127.0.0.1
-      bindPort: 30066
+targets: {}

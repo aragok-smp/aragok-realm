@@ -15,12 +15,18 @@ imports:
       description: "Velocity Forwarding Secret"
       required: true
   values:
-    serverName:
-      description: "Server name for LuckPerms"
-      required: true
+    "memory.initial":
+      description: "Initial heap size (e.g., 4G)"
+      default: 2G
+    "memory.max":
+      description: "Maximum heap size (e.g., 8G)"
+      default: 4G
     bindIP:
       description: "the server address used for binding the server"
       required: true
     bindPort:
       description: "the server port used for binding the server"
+      required: true
+    serverName:
+      description: "Server name for LuckPerms"
       required: true

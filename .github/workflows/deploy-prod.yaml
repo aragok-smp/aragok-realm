@@ -75,10 +75,10 @@ jobs:
             "$ARTIFACT_NAME" \
             "${SSH_USER}@${SSH_HOST}:${REMOTE_ARTIFACT_PATH}"
 
-          echo "Applying artifact on server..."
+          echo "Applying artifact on server (with --force option)..."
           ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa \
             "${SSH_USER}@${SSH_HOST}" \
-            "/usr/local/bin/gok apply ${REMOTE_ARTIFACT_PATH} --destination ${DESTINATION_PATH}"
+            "/usr/local/bin/gok apply ${REMOTE_ARTIFACT_PATH} --destination ${DESTINATION_PATH} --force"
 
           echo "Deployment complete. Cleaning up remote artifact..."
           ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa \

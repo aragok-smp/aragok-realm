@@ -2,6 +2,10 @@ version: 1
 
 values:
   motd: "A gok powered Minecraft server!"
+  # soooo... technically you don't want to do that,
+  # but since we're running the servers in a container, we can bind _all_ servers to _all_ interfaces
+  bindIP: 0.0.0.0
+  bindPort: 25565
 
 targets:
   proxy:
@@ -12,13 +16,10 @@ targets:
       - from: ./templates/velocity
       - from: ./overlays/proxy
     values:
-      # values can be accessed inside the template via
-      #   {{ .values.<key> }}
-      # note that they need to be defined in the gok-template.yaml file.
-      # provided by values/*
-      # velocityBindIP: "0.0.0.0"
-      # velocityBindPort: 25565
-      serverName: proxy # used by LuckPerms
+      serverName: proxy # used by LuckPerms, should also be used as the service name
+      memory:
+        initial: 1G
+        max: 1G
 
   survival:
     output: survival
@@ -30,8 +31,7 @@ targets:
       - from: ./templates/paper-resource-pack # to require resource pack
       - from: ./overlays/survival
     values:
-      # provided by values/*
-      # bindIP: "127.0.0.2"
-      # bindPort: 30066
-      serverName: survival # used by LuckPerms
-
+      serverName: survival # used by LuckPerms, should also be used as the service name
+      memory:
+        initial: 4096M
+        max: 4096M

@@ -7,9 +7,9 @@ imports:
     survival:
       description: "Retrieve Server Bindings from Manifest"
       values:
-        bindIP:
-          description: "IP from survival server"
-          required: true
         bindPort:
           description: "Port from survival server"
+          required: true
+        serverName:
+          description: "Service name from survival server"
           required: true

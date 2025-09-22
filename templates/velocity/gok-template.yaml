@@ -16,6 +16,12 @@ imports:
       description: "Velocity Forwarding Secret"
       required: true
   values:
+    "memory.initial":
+      description: "Initial heap size (e.g., 4G)"
+      default: 1G
+    "memory.max":
+      description: "Maximum heap size (e.g., 8G)"
+      default: 1G
     bindIP:
       description: "IP address to bind the server to"
       required: true
