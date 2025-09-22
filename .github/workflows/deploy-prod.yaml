@@ -17,19 +17,19 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
-      - uses: actions/setup-go@v5
+      - uses: actions/setup-go@v6
         with:
           go-version: "1.25"
 
-      - name: Install Gok
-        run: go install github.com/sap-gg/gok@1a620b7bffcc85cc3e241a90997fea0ba15180d5
+      - name: Install gok
+        uses: jaxxstorm/action-install-gh-release@v1.10.0
+        with:
+          repo: sap-gg/gok
 
       - name: Install SOPS
-        run: |
-          SOPS_VERSION="v3.10.2"
-          curl --retry 7 -Lo sops "https://github.com/getsops/sops/releases/download/${SOPS_VERSION}/sops-${SOPS_VERSION}.linux.amd64"
-          chmod +x sops
-          sudo mv sops /usr/local/bin/
+        uses: jaxxstorm/action-install-gh-release@v1.10.0
+        with:
+          repo: getsops/sops
 
       - name: Import SOPS and SSH Keys
         env:
@@ -52,7 +52,7 @@ jobs:
           echo "ARTIFACT_NAME=${ARTIFACT_NAME}" >> $GITHUB_OUTPUT
 
           echo "Rendering artifact..."
-          sops -d secrets/production.sops.yaml | gok --log-level=debug render \
+          sops -d secrets/production.sops.yaml | gok render \
             --all-targets \
             -f values/production.yaml \
             -s - \
@@ -76,6 +76,11 @@ jobs:
           ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa \
             "${SSH_USER}@${SSH_HOST}" \
             "/usr/local/bin/gok apply ${REMOTE_ARTIFACT_PATH} --destination ${DESTINATION_PATH}"
+
+          echo "Deployment complete. Cleaning up remote artifact..."
+          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa \
+            "${SSH_USER}@${SSH_HOST}" \
+            "rm -f ${REMOTE_ARTIFACT_PATH}"
 
       - name: Cleanup
         if: always()
