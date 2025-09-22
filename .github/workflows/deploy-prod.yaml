@@ -23,9 +23,7 @@ jobs:
           repo: sap-gg/gok
 
       - name: Install SOPS
-        uses: jaxxstorm/action-install-gh-release@v2.1.0
-        with:
-          repo: getsops/sops
+        uses: mdgreenwald/mozilla-sops-action@v1.6.0
 
       - name: Import SOPS and SSH Keys
         env:
