@@ -17,17 +17,13 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
-      - uses: actions/setup-go@v6
-        with:
-          go-version: "1.25"
-
       - name: Install gok
-        uses: jaxxstorm/action-install-gh-release@v1.10.0
+        uses: jaxxstorm/action-install-gh-release@v2.1.0
         with:
           repo: sap-gg/gok
 
       - name: Install SOPS
-        uses: jaxxstorm/action-install-gh-release@v1.10.0
+        uses: jaxxstorm/action-install-gh-release@v2.1.0
         with:
           repo: getsops/sops
 
