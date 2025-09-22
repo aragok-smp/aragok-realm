@@ -18,12 +18,12 @@ jobs:
           go-version: '1.25'
 
       - name: Install Gok
-        run: go install github.com/sap-gg/gok@latest
+        run: go install github.com/sap-gg/gok@1a620b7bffcc85cc3e241a90997fea0ba15180d5
 
       - name: Install SOPS
         run: |
           SOPS_VERSION="v3.10.2"
-          curl -Lo sops "https://github.com/getsops/sops/releases/download/${SOPS_VERSION}/sops-${SOPS_VERSION}.linux.amd64"
+          curl --retry 7 -Lo sops "https://github.com/getsops/sops/releases/download/${SOPS_VERSION}/sops-${SOPS_VERSION}.linux.amd64"
           chmod +x sops
           sudo mv sops /usr/local/bin/
 
