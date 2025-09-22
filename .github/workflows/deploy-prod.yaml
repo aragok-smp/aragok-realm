@@ -10,12 +10,16 @@ jobs:
     name: Render and Deploy
     runs-on: ubuntu-latest
 
+    concurrency:
+      group: deploy-realm-prod
+      cancel-in-progress: true
+
     steps:
       - uses: actions/checkout@v5
 
       - uses: actions/setup-go@v5
         with:
-          go-version: '1.25'
+          go-version: "1.25"
 
       - name: Install Gok
         run: go install github.com/sap-gg/gok@1a620b7bffcc85cc3e241a90997fea0ba15180d5
@@ -35,7 +39,7 @@ jobs:
           # Set up SOPS key
           mkdir -p ~/.config/sops/age
           echo "$SOPS_AGE_KEY" > ~/.config/sops/age/keys.txt
-          
+
           # Set up SSH key
           mkdir -p ~/.ssh
           echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
@@ -71,7 +75,7 @@ jobs:
           echo "Applying artifact on server..."
           ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa \
             "${SSH_USER}@${SSH_HOST}" \
-            "gok apply ${REMOTE_ARTIFACT_PATH} --destination ${DESTINATION_PATH}"
+            "/usr/local/bin/gok apply ${REMOTE_ARTIFACT_PATH} --destination ${DESTINATION_PATH}"
 
       - name: Cleanup
         if: always()
