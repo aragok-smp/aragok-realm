@@ -17,6 +17,15 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
+      - name: Bump Tag
+        id: bump
+        uses: anothrNick/github-tag-action@1.75.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG_PREFIX: v
+          RELEASE_BRANCHES: main
+          DEFAULT_BUMP: patch
+
       - name: Install gok
         uses: jaxxstorm/action-install-gh-release@v2.1.0
         with:
@@ -42,11 +51,11 @@ jobs:
       - name: Render Artifact
         id: render
         run: |
-          ARTIFACT_NAME="realm-${{ github.sha }}.tar.gz"
+          ARTIFACT_NAME="realm-${{ steps.bump.outputs.tag }}.tar.gz"
           echo "ARTIFACT_NAME=${ARTIFACT_NAME}" >> $GITHUB_OUTPUT
 
           echo "Rendering artifact..."
-          sops -d secrets/production.sops.yaml | gok render \
+          sops -d secrets/production.sops.yaml | gok --log-level=info render \
             --all-targets \
             -f values/production.yaml \
             -s - \

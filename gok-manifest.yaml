@@ -30,7 +30,7 @@ targets:
       - from: ./templates/paper-resource-pack # to require resource pack
       - from: ./overlays/survival
     values:
-      # provided by valus/*
+      # provided by values/*
       # bindIP: "127.0.0.2"
       # bindPort: 30066
       serverName: survival # used by LuckPerms
