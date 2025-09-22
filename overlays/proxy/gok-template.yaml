@@ -3,5 +3,13 @@ version: 1
 name: proxy Overlay
 
 imports:
-  manifest:
-    description: "Retrieve Server Bindings from Manifest"
+  targets:
+    survival:
+      description: "Retrieve Server Bindings from Manifest"
+      values:
+        bindIP:
+          description: "IP from survival server"
+          required: true
+        bindPort:
+          description: "Port from survival server"
+          required: true
