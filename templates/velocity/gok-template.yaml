@@ -16,10 +16,10 @@ imports:
       description: "Velocity Forwarding Secret"
       required: true
   values:
-    velocityBindIP:
+    bindIP:
       description: "IP address to bind the server to"
       required: true
-    velocityBindPort:
+    bindPort:
       description: "Port to bind the server to"
       required: true
     serverName:
