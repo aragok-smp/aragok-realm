@@ -8,12 +8,34 @@ maintainers:
   - name: darmiel
   - name: TomRomeo
 
-# note that this template requires secret:
-# .secrets.realm.velocity.forwarding_secret
 imports:
   secrets:
-    "realm.velocity.forwarding_secret":
+    # Velocity Secrets
+    "velocity.forwardingSecret":
       description: "Velocity Forwarding Secret"
+      required: true
+    # PostgreSQL Secrets
+    "postgres.host":
+      description: "PostgreSQL Host"
+      required: true
+    "postgres.port":
+      description: "PostgreSQL Port"
+      required: true
+    "postgres.user":
+      description: "PostgreSQL User"
+      required: true
+    "postgres.password":
+      description: "PostgreSQL Password"
+      required: true
+    "postgres.db":
+      description: "PostgreSQL Database"
+      required: true
+    # Redis Secrets
+    "redis.host":
+      description: "Redis Host"
+      required: true
+    "redis.port":
+      description: "Redis Port"
       required: true
   values:
     "memory.initial":
