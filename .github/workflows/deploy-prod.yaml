@@ -68,7 +68,7 @@ jobs:
         run: |
           ARTIFACT_NAME=${{ steps.render.outputs.ARTIFACT_NAME }}
           REMOTE_ARTIFACT_PATH="/tmp/${ARTIFACT_NAME}"
-          DESTINATION_PATH="/opt/minecraft/prod-runner"
+          DESTINATION_PATH="/opt/minecraft/runner/prod"
 
           echo "Copying artifact to server..."
           scp -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa \
