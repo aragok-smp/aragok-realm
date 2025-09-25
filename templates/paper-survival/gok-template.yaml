@@ -1,0 +1,10 @@
+version: 1
+
+name: PaperMC Survival Additions
+description: >-
+  Adds survival-specific stuff (like difficulty, plugins, ...)
+
+maintainers:
+  - name: darmiel
+
+imports: {}

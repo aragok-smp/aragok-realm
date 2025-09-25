@@ -29,6 +29,7 @@ targets:
       - from: ./templates/paper
       - from: ./templates/paper-velocity # for velocity support
       - from: ./templates/paper-resource-pack # to require resource pack
+      - from: ./templates/paper-survival
       - from: ./overlays/survival
     values:
       serverName: survival # used by LuckPerms, should also be used as the service name
