@@ -1,8 +1,8 @@
 version: 1
 
 algorithm: sha256
-checksum: d09ef1fbbcf5fc7ece5eecae372cbf2b5190467a618cc91ef458f2f6dcb79392
+checksum: c6c7a8882aabcaec8e6dfee05075c1c19a2695704c4e8bbdfda1e06de19fcd42
 
 source:
   http:
-    url: https://github.com/sap-gg/aragokt/releases/download/v0.0.2/Aragokt-1.0-SNAPSHOT.jar
+    url: https://github.com/aragok-smp/aragokt/releases/download/v0.0.4/Aragokt-1.0-SNAPSHOT.jar
