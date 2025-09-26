@@ -1,0 +1,8 @@
+version: 1
+
+algorithm: sha256
+checksum: f1242033cffed9edc895ade56a66a77ba4c73763b378755fc5a5a8a12cba9211
+
+source:
+  http:
+    url: https://github.com/jmattingley23/AppleSkinSpigot/releases/download/latest/AppleSkinSpigot-1.2.0.jar
