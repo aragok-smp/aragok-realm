@@ -1,0 +1,8 @@
+version: 1
+
+algorithm: sha256
+checksum: 21fd75dc4e1a16587ca4a56b97a19704fa80d1e02282fd4cde65564a25340d2c
+
+source:
+  http:
+    url: https://cdn.modrinth.com/data/OhduvhIc/versions/qE6uJoXa/veinminer-paper-2.5.0.jar

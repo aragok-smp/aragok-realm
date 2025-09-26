@@ -1,0 +1,8 @@
+version: 1
+
+algorithm: sha256
+checksum: 77cc34ca5efed90a2ec9e954a0d895cd37c23ae1455aa0b59501e5712ab2cfdc
+
+source:
+  http:
+    url: https://cdn.modrinth.com/data/4sP0LXxp/versions/YqKzhrfs/veinminer-enchant-2.2.2.jar
