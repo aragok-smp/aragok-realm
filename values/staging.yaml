@@ -1,0 +1,15 @@
+version: 1
+
+values: {}
+
+targets:
+  proxy:
+    values:
+      memory:
+        initial: 256M
+        max: 256M
+  survival:
+    values:
+      memory:
+        initial: 2048M
+        max: 2048M

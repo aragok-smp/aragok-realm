@@ -1,0 +1,85 @@
+name: Deploy to Staging
+
+on:
+  push:
+    branches:
+      - staging
+
+jobs:
+  render-and-deploy:
+    name: Render and Deploy
+    runs-on: ubuntu-latest
+
+    concurrency:
+      group: deploy-realm-staging
+      cancel-in-progress: true
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Install gok
+        uses: jaxxstorm/action-install-gh-release@v2.1.0
+        with:
+          repo: sap-gg/gok
+
+      - name: Install SOPS
+        uses: mdgreenwald/mozilla-sops-action@v1.6.0
+
+      - name: Import SOPS and SSH Keys
+        env:
+          SOPS_AGE_KEY: ${{ secrets.SOPS_AGE_KEY }}
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        run: |
+          # Set up SOPS key
+          mkdir -p ~/.config/sops/age
+          echo "$SOPS_AGE_KEY" > ~/.config/sops/age/keys.txt
+
+          # Set up SSH key
+          mkdir -p ~/.ssh
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+
+      - name: Render Artifact
+        id: render
+        run: |
+          ARTIFACT_NAME="realm-staging-${{ steps.bump.outputs.tag }}.tar.gz"
+          echo "ARTIFACT_NAME=${ARTIFACT_NAME}" >> $GITHUB_OUTPUT
+
+          echo "Rendering artifact..."
+          sops -d secrets/staging.sops.yaml | gok --log-level=info render \
+            --all-targets \
+            -f values/staging.yaml \
+            -s - \
+            -o "$ARTIFACT_NAME"
+
+      - name: Deploy to Server
+        env:
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_USER: ${{ secrets.SSH_USER }}
+        run: |
+          ARTIFACT_NAME=${{ steps.render.outputs.ARTIFACT_NAME }}
+          REMOTE_ARTIFACT_PATH="/tmp/${ARTIFACT_NAME}"
+          DESTINATION_PATH="/opt/minecraft/runner/staging"
+
+          echo "Copying artifact to server..."
+          scp -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa \
+            "$ARTIFACT_NAME" \
+            "${SSH_USER}@${SSH_HOST}:${REMOTE_ARTIFACT_PATH}"
+
+          echo "Applying artifact on server (with --force option)..."
+          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa \
+            "${SSH_USER}@${SSH_HOST}" \
+            "/usr/local/bin/gok apply ${REMOTE_ARTIFACT_PATH} --destination ${DESTINATION_PATH} --force"
+
+          echo "Deployment complete. Cleaning up remote artifact..."
+          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa \
+            "${SSH_USER}@${SSH_HOST}" \
+            "rm -f ${REMOTE_ARTIFACT_PATH}"
+
+      - name: Cleanup
+        if: always()
+        run: |
+          echo "Cleaning up local keys and artifact..."
+          rm -f ~/.config/sops/age/keys.txt
+          rm -f ~/.ssh/id_rsa
+          rm -f "realm-${{ github.sha }}.tar.gz"

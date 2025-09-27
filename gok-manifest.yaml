@@ -17,9 +17,6 @@ targets:
       - from: ./overlays/proxy
     values:
       serverName: proxy # used by LuckPerms, should also be used as the service name
-      memory:
-        initial: 1G
-        max: 1G
 
   survival:
     output: survival
@@ -33,6 +30,3 @@ targets:
       - from: ./overlays/survival
     values:
       serverName: survival # used by LuckPerms, should also be used as the service name
-      memory:
-        initial: 4096M
-        max: 8192M

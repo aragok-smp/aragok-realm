@@ -1,0 +1,47 @@
+name: Test Pull Request Render
+
+on:
+  pull_request:
+
+jobs:
+  render-and-deploy:
+    name: Render and Deploy
+    runs-on: ubuntu-latest
+
+    concurrency:
+      group: pull-request-test-render
+      cancel-in-progress: true
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Install gok
+        uses: jaxxstorm/action-install-gh-release@v2.1.0
+        with:
+          repo: sap-gg/gok
+
+      - name: Install SOPS
+        uses: mdgreenwald/mozilla-sops-action@v1.6.0
+
+      - name: Import SOPS and SSH Keys
+        env:
+          SOPS_AGE_KEY: ${{ secrets.SOPS_AGE_KEY }}
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        run: |
+          # Set up SOPS key
+          mkdir -p ~/.config/sops/age
+          echo "$SOPS_AGE_KEY" > ~/.config/sops/age/keys.txt
+
+      - name: Render production Artifact
+        run: |
+          sops -d secrets/production.sops.yaml | gok --log-level=info render \
+            --all-targets \
+            -f values/production.yaml \
+            -s -
+
+      - name: Render staging Artifact
+        run: |
+          sops -d secrets/staging.sops.yaml | gok --log-level=info render \
+            --all-targets \
+            -f values/staging.yaml \
+            -s -
