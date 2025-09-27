@@ -1,6 +1,7 @@
 version: 1
 
-values: {}
+values:
+  hello: "world"
 
 targets:
   proxy:
@@ -13,3 +14,4 @@ targets:
       memory:
         initial: 2048M
         max: 2048M
+
