@@ -35,4 +35,4 @@ targets:
       serverName: survival # used by LuckPerms, should also be used as the service name
       memory:
         initial: 4096M
-        max: 4096M
+        max: 8192M
