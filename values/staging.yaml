@@ -5,6 +5,7 @@ values: {}
 targets:
   proxy:
     values:
+      grade: staging
       memory:
         initial: 256M
         max: 256M
@@ -13,3 +14,4 @@ targets:
       memory:
         initial: 2048M
         max: 2048M
+

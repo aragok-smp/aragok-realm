@@ -58,6 +58,7 @@ jobs:
           sops -d secrets/production.sops.yaml | gok --log-level=info render \
             --all-targets \
             -f values/production.yaml \
+            -v "version=${{ steps.bump.outputs.tag }}" \
             -s - \
             -o "$ARTIFACT_NAME"
 

@@ -5,6 +5,7 @@ values: {}
 targets:
   proxy:
     values:
+      grade: production
       memory:
         initial: 1G
         max: 1G
