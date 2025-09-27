@@ -1,4 +1,6 @@
 # overlayed velocity.toml contains all the servers
+motd = """<gray>The <gradient:#0dff15:#4dffb2>aragok</gradient> SMP Minecraft Server!
+<dark_gray>({{ .values.grade }}, version {{ .values.version }})"""
 
 [servers]
 "survival" = "{{ .targets.survival.values.serverName }}:{{ .targets.survival.values.bindPort }}"
@@ -6,3 +8,4 @@
 try = [
   "survival"
 ]
+

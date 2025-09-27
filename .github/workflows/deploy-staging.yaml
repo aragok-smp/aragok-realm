@@ -42,13 +42,14 @@ jobs:
       - name: Render Artifact
         id: render
         run: |
-          ARTIFACT_NAME="realm-staging-${{ steps.bump.outputs.tag }}.tar.gz"
+          ARTIFACT_NAME="realm-staging-${{ github.sha }}.tar.gz"
           echo "ARTIFACT_NAME=${ARTIFACT_NAME}" >> $GITHUB_OUTPUT
 
           echo "Rendering artifact..."
           sops -d secrets/staging.sops.yaml | gok --log-level=info render \
             --all-targets \
             -f values/staging.yaml \
+            -v "version=${{ github.sha }}" \
             -s - \
             -o "$ARTIFACT_NAME"
 

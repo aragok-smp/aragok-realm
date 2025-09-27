@@ -1,11 +1,12 @@
 version: 1
 
 values:
-  motd: "A gok powered Minecraft server!"
   # soooo... technically you don't want to do that,
   # but since we're running the servers in a container, we can bind _all_ servers to _all_ interfaces
   bindIP: 0.0.0.0
   bindPort: 25565
+  version: dirty-version # fallback, should be set by external values
+  grade: dirty-grade # fallback, should be set by external values
 
 targets:
   proxy:

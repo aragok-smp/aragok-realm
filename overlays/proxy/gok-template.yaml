@@ -13,3 +13,10 @@ imports:
         serverName:
           description: "Service name from survival server"
           required: true
+  values:
+    grade:
+      description: "The server grade for motd"
+      required: true
+    version:
+      description: "The server version for motd"
+      required: true

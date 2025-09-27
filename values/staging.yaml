@@ -1,11 +1,11 @@
 version: 1
 
-values:
-  motd: "A gok powered Minecraft server! <yellow>(Staging)"
+values: {}
 
 targets:
   proxy:
     values:
+      grade: staging
       memory:
         initial: 256M
         max: 256M
