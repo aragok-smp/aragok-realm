@@ -4,7 +4,7 @@ echo "Starting paper.jar with {{ .values.memory.initial }} initial and {{ .value
 
 # Aikar's Flags for PaperMC
 # https://docs.papermc.io/paper/aikars-flags
-java -Xms{{ .values.memory.initial }} -Xmx{{ .values.memory.max }} \
+exec java -Xms{{ .values.memory.initial }} -Xmx{{ .values.memory.max }} \
   -XX:+UseG1GC \
   -XX:+ParallelRefProcEnabled \
   -XX:MaxGCPauseMillis=200 \

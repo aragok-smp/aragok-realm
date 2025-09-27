@@ -4,5 +4,5 @@ echo "Starting velocity.jar with {{ .values.memory.initial }} initial and {{ .va
 
 # Aikar's Flags for PaperMC
 # https://docs.papermc.io/paper/aikars-flags
-java -Xms{{ .values.memory.initial }} -Xmx{{ .values.memory.max }} \
+exec java -Xms{{ .values.memory.initial }} -Xmx{{ .values.memory.max }} \
   -jar velocity.jar
