@@ -51,7 +51,7 @@ jobs:
       - name: Render Artifact
         id: render
         run: |
-          ARTIFACT_NAME="realm-${{ steps.bump.outputs.tag }}.tar.gz"
+          ARTIFACT_NAME="realm-production-${{ steps.bump.outputs.tag }}.tar.gz"
           echo "ARTIFACT_NAME=${ARTIFACT_NAME}" >> $GITHUB_OUTPUT
 
           echo "Rendering artifact..."
@@ -69,7 +69,7 @@ jobs:
         run: |
           ARTIFACT_NAME=${{ steps.render.outputs.ARTIFACT_NAME }}
           REMOTE_ARTIFACT_PATH="/tmp/${ARTIFACT_NAME}"
-          DESTINATION_PATH="/opt/minecraft/runner/prod"
+          DESTINATION_PATH="/opt/minecraft/aragok/aragok-runner/prod"
 
           echo "Copying artifact to server..."
           scp -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa \
