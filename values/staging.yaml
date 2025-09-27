@@ -1,7 +1,7 @@
 version: 1
 
 values:
-  hello: "world"
+  motd: "A gok powered Minecraft server! <yellow>(Staging)"
 
 targets:
   proxy:
