@@ -5,8 +5,8 @@ on:
     branches:
       - staging
     paths-ignore:
-      - .github/
-      - README.md
+      - '.github/**'
+      - 'README.md'
 
 jobs:
   render-and-deploy:

@@ -3,7 +3,7 @@ name: Sync Staging
 on:
   workflow_dispatch:
   schedule:
-     - cron: "18 4 * * *"
+    - cron: "18 4 * * *"
 
 jobs:
   render-and-deploy:
