@@ -1,0 +1,8 @@
+version: 1
+
+algorithm: sha256
+checksum: 2a5477fc80f71012e15ade1ce34dbeb836e17623b28db112492c0f1443c09721
+
+source:
+  http:
+    url: https://cdn.modrinth.com/data/fALzjamp/versions/P3y2MXnd/Chunky-Bukkit-1.4.40.jar
