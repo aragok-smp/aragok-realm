@@ -9,6 +9,7 @@ jobs:
   render-and-deploy:
     name: Sync
     runs-on: ubuntu-latest
+    timeout-minutes: 5
 
     concurrency:
       group: sync-staging
