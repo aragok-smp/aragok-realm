@@ -1,0 +1,8 @@
+version: 1
+
+algorithm: sha256
+checksum: f47d7ae9b2e461fe86bfde0b2c6f5d9ee4dc473c5aedbc69ed591ae493f99c2f
+
+source:
+  http:
+    url: https://github.com/aragok-smp/veinminer-enchant-paper/releases/download/v0.0.2/veinminer-enchant-paper-0.0.2.jar
