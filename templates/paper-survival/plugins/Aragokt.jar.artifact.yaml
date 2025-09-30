@@ -1,8 +1,0 @@
-version: 1
-
-algorithm: sha256
-checksum: c6c7a8882aabcaec8e6dfee05075c1c19a2695704c4e8bbdfda1e06de19fcd42
-
-source:
-  http:
-    url: https://github.com/aragok-smp/aragokt/releases/download/v0.0.4/Aragokt-1.0-SNAPSHOT.jar

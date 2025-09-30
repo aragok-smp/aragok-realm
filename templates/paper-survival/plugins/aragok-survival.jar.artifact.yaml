@@ -1,0 +1,8 @@
+version: 1
+
+algorithm: sha256
+checksum: 2ef3aad9b7e01f55b27219e65d623403249e627f97b0e1908e88f7dba9949497
+
+source:
+  http:
+    url: https://github.com/aragok-smp/aragok-plugin/releases/download/v0.0.2/paper-survival-0.1-SNAPSHOT.jar
