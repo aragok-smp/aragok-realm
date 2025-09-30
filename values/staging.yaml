@@ -5,7 +5,7 @@ values: {}
 targets:
   proxy:
     values:
-      grade: staging
+      grade: "<red>staging<dark_gray>"
       memory:
         initial: 256M
         max: 256M
