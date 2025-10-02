@@ -1,8 +1,8 @@
 version: 1
 
 algorithm: sha256
-checksum: 8de7c52c3b02403503d16fac58003f1efef7dd7a0256786843927fa92ee57f1e
+checksum: 6429313207d888812353bbba4bd22d5643c3d6cee1e23d30f455dd6a8a664f4c
 
 source:
   http:
-    url: https://fill-data.papermc.io/v1/objects/8de7c52c3b02403503d16fac58003f1efef7dd7a0256786843927fa92ee57f1e/paper-1.21.8-60.jar
+    url: https://fill-data.papermc.io/v1/objects/6429313207d888812353bbba4bd22d5643c3d6cee1e23d30f455dd6a8a664f4c/paper-1.21.9-42.jar
