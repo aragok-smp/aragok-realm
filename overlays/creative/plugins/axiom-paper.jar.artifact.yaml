@@ -1,0 +1,8 @@
+version: 1
+
+algorithm: sha256
+checksum: 0626bc250b673759c6d47f2ac9527c17f6cc3f0f7a46acc29729baaec3fea4ea
+
+source:
+  http:
+    url: https://cdn.modrinth.com/data/evkiwA7V/versions/AL20GMnl/AxiomPaper-5.0.1-for-MC1.21.8.jar
