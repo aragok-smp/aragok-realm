@@ -31,3 +31,14 @@ targets:
       - from: ./overlays/survival
     values:
       serverName: survival # used by LuckPerms, should also be used as the service name
+
+  creative:
+    output: creative
+    tags:
+      - creative
+    templates:
+      - from: ./templates/paper
+      - from: ./templates/paper-velocity # for velocity support
+      - from: ./overlays/creative
+    values:
+      serverName: creative # used by LuckPerms, should also be used as the service name
