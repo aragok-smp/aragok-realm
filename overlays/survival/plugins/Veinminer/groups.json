@@ -7,5 +7,14 @@
         "tools": [
             "#minecraft:pickaxes"
         ]
+    },
+    {
+        "name": "Wood",
+        "blocks": [
+            "#minecraft:logs"
+        ],
+        "tools": [
+            "#minecraft:axes"
+        ]
     }
 ]
