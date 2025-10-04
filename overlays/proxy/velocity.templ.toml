@@ -4,6 +4,7 @@ motd = """<gray>The <gradient:#0dff15:#4dffb2>aragok</gradient> SMP Minecraft Se
 
 [servers]
 "survival" = "{{ .targets.survival.values.serverName }}:{{ .targets.survival.values.bindPort }}"
+"creative" = "{{ .targets.creative.values.serverName }}:{{ .targets.creative.values.bindPort }}"
 
 try = [
   "survival"

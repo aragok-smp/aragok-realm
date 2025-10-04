@@ -13,6 +13,15 @@ imports:
         serverName:
           description: "Service name from survival server"
           required: true
+    creative:
+      description: "Retrieve Server Bindings from Manifest"
+      values:
+        bindPort:
+          description: "Port from creative server"
+          required: true
+        serverName:
+          description: "Service name from creative server"
+          required: true
   values:
     grade:
       description: "The server grade for motd"

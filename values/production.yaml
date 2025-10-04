@@ -14,3 +14,8 @@ targets:
       memory:
         initial: 4096M
         max: 8192M
+  creative:
+    values:
+      memory:
+        initial: 1024M
+        max: 2048M
