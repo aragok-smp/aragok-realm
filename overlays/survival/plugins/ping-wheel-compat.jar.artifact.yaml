@@ -1,0 +1,8 @@
+version: 1
+
+algorithm: sha256
+checksum: e5b9e74600704e9d1de8a1f642a0bdf882aa425ec7c5803c1f5f5937fd37a65f
+
+source:
+  http:
+    url: https://cdn.modrinth.com/data/HgEYbqDX/versions/DIS0znZm/Ping-Wheel-Plugin-1.0.1-bukkit-1.18%2B.jar
