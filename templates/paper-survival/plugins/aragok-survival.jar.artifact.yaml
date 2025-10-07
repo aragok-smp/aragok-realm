@@ -1,8 +1,8 @@
 version: 1
 
 algorithm: sha256
-checksum: 0f2544e3bfef8e0f785a617cbcfa3f080ea8409b909b5ea110b1c0e07e167449
+checksum: cbeebaa2a598d58274de6d67f1122452f5d9fe8783537dad59ba3ad52af06230
 
 source:
   http:
-    url: https://github.com/aragok-smp/aragok-plugin/releases/download/v0.0.20/paper-survival-v0.0.20.jar
+    url: https://github.com/aragok-smp/aragok-plugin/releases/download/v0.0.21/paper-survival-v0.0.21.jar
