@@ -1,8 +1,8 @@
 version: 1
 
 algorithm: sha256
-checksum: 5b154634bb4e26cc89f8257b4b1b01573995a6f5c62a2346550287515efcb2a9
+checksum: 03576a807bfcdcf96774f90952aeb4deafbdb4332373b5aae7bcaaeb71f5b496
 
 source:
   http:
-    url: https://github.com/aragok-smp/aragok-plugin/releases/download/v0.0.23/paper-base-v0.0.23.jar
+    url: https://github.com/aragok-smp/aragok-plugin/releases/download/v0.0.24/paper-base-v0.0.24.jar

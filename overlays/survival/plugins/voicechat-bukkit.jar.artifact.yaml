@@ -1,8 +1,8 @@
 version: 1
 
 algorithm: sha256
-checksum: 167abefe8ad65871c957b129915f9eba1a4bb875568c09eef55b68b766808c11
+checksum: d8363808ad844eda5bd1da8c651a00545f8b2b31475233f3685365c51b30ed91
 
 source:
   http:
-    url: https://cdn.modrinth.com/data/9eGKb6K1/versions/VloDgjv1/voicechat-bukkit-2.6.4.jar
+    url: https://cdn.modrinth.com/data/9eGKb6K1/versions/kR5X735T/voicechat-bukkit-2.6.5.jar
