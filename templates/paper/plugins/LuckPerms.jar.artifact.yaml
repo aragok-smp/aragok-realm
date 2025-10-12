@@ -1,8 +1,8 @@
 version: 1
 
 algorithm: sha256
-checksum: 8ba2a2b380e3df1e40290f0393a59734ea56fe00c4f03ffec21f1547f72fde36
+checksum: d5b160a3971a8372cc5835bcd555e37c1aa61e9dd30559921a5f421a11bf97dd
 
 source:
   http:
-    url: https://download.luckperms.net/1605/bukkit/loader/LuckPerms-Bukkit-5.5.16.jar
+    url: https://download.luckperms.net/1606/bukkit/loader/LuckPerms-Bukkit-5.5.17.jar

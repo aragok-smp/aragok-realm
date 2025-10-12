@@ -1,8 +1,8 @@
 version: 1
 
 algorithm: sha256
-checksum: 01830b546a000a71f1a7f501aa40ed94f84725c9b70031278d0045b3d9fef049
+checksum: 6282b0c2d84263f6d869fe3dafe1ce3492a27d8adbb45ce3d7d1aa73826f417b
 
 source:
   http:
-    url: https://download.luckperms.net/1596/velocity/LuckPerms-Velocity-5.5.11.jar
+    url: https://download.luckperms.net/1606/velocity/LuckPerms-Velocity-5.5.17.jar
