@@ -7,6 +7,11 @@ values:
   bindPort: 25565
   version: dirty-version # fallback, should be set by external values
   grade: dirty-grade # fallback, should be set by external values
+  aragokPlugin:
+    version: 26
+    checksums:
+      base: 44aec13cfa87bfcc3e0cac4e7ef8090b502e86d467bca7fc9a948cc64f130bda
+      survival: 5c1c96fa066e5336914100849600b7a832b02732841e0556a9d1923f2d52b894
 
 targets:
   proxy:

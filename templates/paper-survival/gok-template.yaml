@@ -7,4 +7,11 @@ description: >-
 maintainers:
   - name: darmiel
 
-imports: {}
+imports:
+  values:
+    "aragokPlugin.version":
+      description: "Version of aragok-plugin"
+      required: true
+    "aragokPlugin.checksums.survival":
+      description: "Checksum of the survival aragok-plugin"
+      required: true
