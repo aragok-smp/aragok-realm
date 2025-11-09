@@ -1,8 +1,7 @@
 version: 1
 
 algorithm: sha256
-checksum: >-
-  {{ .values.aragokPlugin.checksums.survival }}
+checksum: "{{ .values.aragokPlugin.checksums.survival }}"
 
 source:
   http:
