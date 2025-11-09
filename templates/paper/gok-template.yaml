@@ -53,3 +53,9 @@ imports:
     serverName:
       description: "Server name for LuckPerms"
       required: true
+    "aragokPlugin.version":
+      description: "Version of aragok-plugin"
+      required: true
+    "aragokPlugin.checksums.base":
+      description: "Checksum of the base aragok-plugin"
+      required: true
